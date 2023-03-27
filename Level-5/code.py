@@ -13,12 +13,12 @@ class Random_generator:
     'abcdefghijklmnopqrstuvwxyz'
     'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
     )):
-        return ''.join(random.choice(alphabet) for i in range(length))
+        return ''.join(random.choice(alphabet) for _ in range(length))
 
     # generates salt
     def generate_salt(self, rounds=22):
-        first_phrase = ''.join(str(random.randint(0,9)) for i in range(rounds))
-        second_phase = '$2b$12$' + first_phrase
+        first_phrase = ''.join(str(random.randint(0,9)) for _ in range(rounds))
+        second_phase = f'$2b$12${first_phrase}'
         return second_phase.encode()
 
 class SHA256_hasher:
